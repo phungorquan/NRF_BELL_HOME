@@ -1,0 +1,1460 @@
+
+RX_A.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000084c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000010  00800060  0000084c  000008e0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000018  00800070  00800070  000008f0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000008f0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000920  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000140  00000000  00000000  0000095c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002c2d  00000000  00000000  00000a9c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000009c6  00000000  00000000  000036c9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000b1d  00000000  00000000  0000408f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003ac  00000000  00000000  00004bac  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000009f7  00000000  00000000  00004f58  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001864  00000000  00000000  0000594f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000120  00000000  00000000  000071b3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1c c0       	rjmp	.+56     	; 0x3a <__ctors_end>
+   2:	40 c0       	rjmp	.+128    	; 0x84 <__bad_interrupt>
+   4:	3f c0       	rjmp	.+126    	; 0x84 <__bad_interrupt>
+   6:	3e c0       	rjmp	.+124    	; 0x84 <__bad_interrupt>
+   8:	3d c0       	rjmp	.+122    	; 0x84 <__bad_interrupt>
+   a:	3c c0       	rjmp	.+120    	; 0x84 <__bad_interrupt>
+   c:	3b c0       	rjmp	.+118    	; 0x84 <__bad_interrupt>
+   e:	3a c0       	rjmp	.+116    	; 0x84 <__bad_interrupt>
+  10:	39 c0       	rjmp	.+114    	; 0x84 <__bad_interrupt>
+  12:	38 c0       	rjmp	.+112    	; 0x84 <__bad_interrupt>
+  14:	37 c0       	rjmp	.+110    	; 0x84 <__bad_interrupt>
+  16:	36 c0       	rjmp	.+108    	; 0x84 <__bad_interrupt>
+  18:	35 c0       	rjmp	.+106    	; 0x84 <__bad_interrupt>
+  1a:	34 c0       	rjmp	.+104    	; 0x84 <__bad_interrupt>
+  1c:	33 c0       	rjmp	.+102    	; 0x84 <__bad_interrupt>
+  1e:	32 c0       	rjmp	.+100    	; 0x84 <__bad_interrupt>
+  20:	31 c0       	rjmp	.+98     	; 0x84 <__bad_interrupt>
+  22:	30 c0       	rjmp	.+96     	; 0x84 <__bad_interrupt>
+  24:	2f c0       	rjmp	.+94     	; 0x84 <__bad_interrupt>
+
+00000026 <__trampolines_end>:
+  26:	11 12       	cpse	r1, r17
+  28:	13 14       	cp	r1, r3
+  2a:	15 16       	cp	r1, r21
+
+0000002c <_ZL10child_pipe>:
+  2c:	0a 0b 0c 0d 0e 0f                                   ......
+
+00000032 <_ZL17child_pipe_enable>:
+  32:	00 01 02 03 04 05                                   ......
+
+00000038 <__ctors_start>:
+  38:	29 01       	movw	r4, r18
+
+0000003a <__ctors_end>:
+  3a:	11 24       	eor	r1, r1
+  3c:	1f be       	out	0x3f, r1	; 63
+  3e:	cf e5       	ldi	r28, 0x5F	; 95
+  40:	d4 e0       	ldi	r29, 0x04	; 4
+  42:	de bf       	out	0x3e, r29	; 62
+  44:	cd bf       	out	0x3d, r28	; 61
+
+00000046 <__do_copy_data>:
+  46:	10 e0       	ldi	r17, 0x00	; 0
+  48:	a0 e6       	ldi	r26, 0x60	; 96
+  4a:	b0 e0       	ldi	r27, 0x00	; 0
+  4c:	ec e4       	ldi	r30, 0x4C	; 76
+  4e:	f8 e0       	ldi	r31, 0x08	; 8
+  50:	02 c0       	rjmp	.+4      	; 0x56 <__do_copy_data+0x10>
+  52:	05 90       	lpm	r0, Z+
+  54:	0d 92       	st	X+, r0
+  56:	a0 37       	cpi	r26, 0x70	; 112
+  58:	b1 07       	cpc	r27, r17
+  5a:	d9 f7       	brne	.-10     	; 0x52 <__do_copy_data+0xc>
+
+0000005c <__do_clear_bss>:
+  5c:	20 e0       	ldi	r18, 0x00	; 0
+  5e:	a0 e7       	ldi	r26, 0x70	; 112
+  60:	b0 e0       	ldi	r27, 0x00	; 0
+  62:	01 c0       	rjmp	.+2      	; 0x66 <.do_clear_bss_start>
+
+00000064 <.do_clear_bss_loop>:
+  64:	1d 92       	st	X+, r1
+
+00000066 <.do_clear_bss_start>:
+  66:	a8 38       	cpi	r26, 0x88	; 136
+  68:	b2 07       	cpc	r27, r18
+  6a:	e1 f7       	brne	.-8      	; 0x64 <.do_clear_bss_loop>
+
+0000006c <__do_global_ctors>:
+  6c:	10 e0       	ldi	r17, 0x00	; 0
+  6e:	cd e1       	ldi	r28, 0x1D	; 29
+  70:	d0 e0       	ldi	r29, 0x00	; 0
+  72:	03 c0       	rjmp	.+6      	; 0x7a <__do_global_ctors+0xe>
+  74:	21 97       	sbiw	r28, 0x01	; 1
+  76:	fe 01       	movw	r30, r28
+  78:	e1 d3       	rcall	.+1986   	; 0x83c <__tablejump2__>
+  7a:	cc 31       	cpi	r28, 0x1C	; 28
+  7c:	d1 07       	cpc	r29, r17
+  7e:	d1 f7       	brne	.-12     	; 0x74 <__do_global_ctors+0x8>
+  80:	02 d0       	rcall	.+4      	; 0x86 <main>
+  82:	e2 c3       	rjmp	.+1988   	; 0x848 <_exit>
+
+00000084 <__bad_interrupt>:
+  84:	bd cf       	rjmp	.-134    	; 0x0 <__vectors>
+
+00000086 <main>:
+
+
+	
+int main(void)
+{
+	DDRD = 0x00;
+  86:	11 ba       	out	0x11, r1	; 17
+	PORTD = 0b11110000;
+  88:	80 ef       	ldi	r24, 0xF0	; 240
+  8a:	82 bb       	out	0x12, r24	; 18
+	DDRC = 0xff;
+  8c:	8f ef       	ldi	r24, 0xFF	; 255
+  8e:	84 bb       	out	0x14, r24	; 20
+
+	sbi(PORTC,3);
+  90:	ab 9a       	sbi	0x15, 3	; 21
+	//UBRRH = 0b00000001; // 0x01
+	UBRRL = 103; // 4800 8MHZ // 9600 16MHZ
+  92:	87 e6       	ldi	r24, 0x67	; 103
+  94:	89 b9       	out	0x09, r24	; 9
+	
+	//UCSRA = 1<<U2X;
+	UCSRC =	(1<<URSEL)|(1 << UCSZ1) | (1 << UCSZ0); // k chon UBRRch va chon mode 8bit
+  96:	86 e8       	ldi	r24, 0x86	; 134
+  98:	80 bd       	out	0x20, r24	; 32
+	UCSRB = (1 << RXEN) | (1 << TXEN)|(1<<RXCIE); //EN rx,tx,ngat
+  9a:	88 e9       	ldi	r24, 0x98	; 152
+  9c:	8a b9       	out	0x0a, r24	; 10
+	
+		myRadio.begin();
+  9e:	81 e7       	ldi	r24, 0x71	; 113
+  a0:	90 e0       	ldi	r25, 0x00	; 0
+  a2:	44 d2       	rcall	.+1160   	; 0x52c <_ZN4RF245beginEv>
+		myRadio.setChannel(115);
+  a4:	63 e7       	ldi	r22, 0x73	; 115
+  a6:	81 e7       	ldi	r24, 0x71	; 113
+  a8:	90 e0       	ldi	r25, 0x00	; 0
+  aa:	81 d1       	rcall	.+770    	; 0x3ae <_ZN4RF2410setChannelEh>
+		myRadio.setPALevel(RF24_PA_MAX);
+  ac:	63 e0       	ldi	r22, 0x03	; 3
+  ae:	81 e7       	ldi	r24, 0x71	; 113
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	a5 d1       	rcall	.+842    	; 0x3fe <_ZN4RF2410setPALevelEh>
+		myRadio.setDataRate( RF24_250KBPS );
+  b4:	62 e0       	ldi	r22, 0x02	; 2
+  b6:	81 e7       	ldi	r24, 0x71	; 113
+  b8:	90 e0       	ldi	r25, 0x00	; 0
+  ba:	38 d1       	rcall	.+624    	; 0x32c <_ZN4RF2411setDataRateE15rf24_datarate_e>
+		myRadio.openReadingPipe(1, addresses[0]);
+  bc:	44 e6       	ldi	r20, 0x64	; 100
+  be:	50 e0       	ldi	r21, 0x00	; 0
+  c0:	61 e0       	ldi	r22, 0x01	; 1
+  c2:	81 e7       	ldi	r24, 0x71	; 113
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	b2 d1       	rcall	.+868    	; 0x42c <_ZN4RF2415openReadingPipeEhPKh>
+		myRadio.startListening();
+  c8:	81 e7       	ldi	r24, 0x71	; 113
+  ca:	90 e0       	ldi	r25, 0x00	; 0
+  cc:	06 d2       	rcall	.+1036   	; 0x4da <_ZN4RF2414startListeningEv>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  ce:	2f ef       	ldi	r18, 0xFF	; 255
+  d0:	81 e1       	ldi	r24, 0x11	; 17
+  d2:	9a e7       	ldi	r25, 0x7A	; 122
+  d4:	21 50       	subi	r18, 0x01	; 1
+  d6:	80 40       	sbci	r24, 0x00	; 0
+  d8:	90 40       	sbci	r25, 0x00	; 0
+  da:	e1 f7       	brne	.-8      	; 0xd4 <main+0x4e>
+  dc:	00 c0       	rjmp	.+0      	; 0xde <main+0x58>
+  de:	00 00       	nop
+		_delay_ms(2000);
+		myRadio.stopListening();
+  e0:	81 e7       	ldi	r24, 0x71	; 113
+  e2:	90 e0       	ldi	r25, 0x00	; 0
+  e4:	ee d2       	rcall	.+1500   	; 0x6c2 <_ZN4RF2413stopListeningEv>
+		
+		//Start First
+		//send('F');
+		myRadio.openWritingPipe(addresses[1]);
+  e6:	6a e6       	ldi	r22, 0x6A	; 106
+  e8:	70 e0       	ldi	r23, 0x00	; 0
+  ea:	81 e7       	ldi	r24, 0x71	; 113
+  ec:	90 e0       	ldi	r25, 0x00	; 0
+  ee:	1c d3       	rcall	.+1592   	; 0x728 <_ZN4RF2415openWritingPipeEPKh>
+		myRadio.write(&_Send_FirstTime_1, sizeof(_Send_FirstTime_1));
+  f0:	41 e0       	ldi	r20, 0x01	; 1
+  f2:	63 e6       	ldi	r22, 0x63	; 99
+  f4:	70 e0       	ldi	r23, 0x00	; 0
+  f6:	81 e7       	ldi	r24, 0x71	; 113
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	9d d3       	rcall	.+1850   	; 0x836 <_ZN4RF245writeEPKvh>
+		myRadio.openReadingPipe(1, addresses[0]);
+  fc:	44 e6       	ldi	r20, 0x64	; 100
+  fe:	50 e0       	ldi	r21, 0x00	; 0
+ 100:	61 e0       	ldi	r22, 0x01	; 1
+ 102:	81 e7       	ldi	r24, 0x71	; 113
+ 104:	90 e0       	ldi	r25, 0x00	; 0
+ 106:	92 d1       	rcall	.+804    	; 0x42c <_ZN4RF2415openReadingPipeEhPKh>
+		myRadio.startListening();
+ 108:	81 e7       	ldi	r24, 0x71	; 113
+ 10a:	90 e0       	ldi	r25, 0x00	; 0
+ 10c:	e6 d1       	rcall	.+972    	; 0x4da <_ZN4RF2414startListeningEv>
+ 10e:	2f ef       	ldi	r18, 0xFF	; 255
+ 110:	81 e1       	ldi	r24, 0x11	; 17
+ 112:	9a e7       	ldi	r25, 0x7A	; 122
+ 114:	21 50       	subi	r18, 0x01	; 1
+ 116:	80 40       	sbci	r24, 0x00	; 0
+ 118:	90 40       	sbci	r25, 0x00	; 0
+ 11a:	e1 f7       	brne	.-8      	; 0x114 <main+0x8e>
+ 11c:	00 c0       	rjmp	.+0      	; 0x11e <main+0x98>
+ 11e:	00 00       	nop
+		_delay_ms(2000);
+
+	while (1)
+	{
+
+		if ( myRadio.available()) {
+ 120:	81 e7       	ldi	r24, 0x71	; 113
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	73 d2       	rcall	.+1254   	; 0x60c <_ZN4RF249availableEv>
+ 126:	88 23       	and	r24, r24
+ 128:	09 f4       	brne	.+2      	; 0x12c <main+0xa6>
+ 12a:	54 c0       	rjmp	.+168    	; 0x1d4 <main+0x14e>
+		while (myRadio.available())
+ 12c:	81 e7       	ldi	r24, 0x71	; 113
+ 12e:	90 e0       	ldi	r25, 0x00	; 0
+ 130:	6d d2       	rcall	.+1242   	; 0x60c <_ZN4RF249availableEv>
+ 132:	88 23       	and	r24, r24
+ 134:	39 f0       	breq	.+14     	; 0x144 <main+0xbe>
+			myRadio.read( &_Receive_1, sizeof(_Receive_1) );
+ 136:	41 e0       	ldi	r20, 0x01	; 1
+ 138:	60 e7       	ldi	r22, 0x70	; 112
+ 13a:	70 e0       	ldi	r23, 0x00	; 0
+ 13c:	81 e7       	ldi	r24, 0x71	; 113
+ 13e:	90 e0       	ldi	r25, 0x00	; 0
+ 140:	b5 d2       	rcall	.+1386   	; 0x6ac <_ZN4RF244readEPvh>
+
+	while (1)
+	{
+
+		if ( myRadio.available()) {
+		while (myRadio.available())
+ 142:	f4 cf       	rjmp	.-24     	; 0x12c <main+0xa6>
+ 144:	2f e7       	ldi	r18, 0x7F	; 127
+ 146:	88 e3       	ldi	r24, 0x38	; 56
+ 148:	91 e0       	ldi	r25, 0x01	; 1
+ 14a:	21 50       	subi	r18, 0x01	; 1
+ 14c:	80 40       	sbci	r24, 0x00	; 0
+ 14e:	90 40       	sbci	r25, 0x00	; 0
+ 150:	e1 f7       	brne	.-8      	; 0x14a <main+0xc4>
+ 152:	00 c0       	rjmp	.+0      	; 0x154 <main+0xce>
+ 154:	00 00       	nop
+			myRadio.read( &_Receive_1, sizeof(_Receive_1) );
+		
+		_delay_ms(20);
+		 if(_Receive_1 == 'A')	// Receive Call Alarm from Center
+ 156:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <__data_end>
+ 15a:	81 34       	cpi	r24, 0x41	; 65
+ 15c:	11 f5       	brne	.+68     	; 0x1a2 <main+0x11c>
+ 15e:	2f ef       	ldi	r18, 0xFF	; 255
+ 160:	84 e3       	ldi	r24, 0x34	; 52
+ 162:	9c e0       	ldi	r25, 0x0C	; 12
+ 164:	21 50       	subi	r18, 0x01	; 1
+ 166:	80 40       	sbci	r24, 0x00	; 0
+ 168:	90 40       	sbci	r25, 0x00	; 0
+ 16a:	e1 f7       	brne	.-8      	; 0x164 <main+0xde>
+ 16c:	00 c0       	rjmp	.+0      	; 0x16e <main+0xe8>
+ 16e:	00 00       	nop
+		 {
+			 _delay_ms(200);
+			 myRadio.stopListening();
+ 170:	81 e7       	ldi	r24, 0x71	; 113
+ 172:	90 e0       	ldi	r25, 0x00	; 0
+ 174:	a6 d2       	rcall	.+1356   	; 0x6c2 <_ZN4RF2413stopListeningEv>
+				//send('L');
+			 myRadio.openWritingPipe(addresses[1]);
+ 176:	6a e6       	ldi	r22, 0x6A	; 106
+ 178:	70 e0       	ldi	r23, 0x00	; 0
+ 17a:	81 e7       	ldi	r24, 0x71	; 113
+ 17c:	90 e0       	ldi	r25, 0x00	; 0
+ 17e:	d4 d2       	rcall	.+1448   	; 0x728 <_ZN4RF2415openWritingPipeEPKh>
+			 myRadio.write(&_Feedback_1, sizeof(_Feedback_1));	
+ 180:	41 e0       	ldi	r20, 0x01	; 1
+ 182:	61 e6       	ldi	r22, 0x61	; 97
+ 184:	70 e0       	ldi	r23, 0x00	; 0
+ 186:	81 e7       	ldi	r24, 0x71	; 113
+ 188:	90 e0       	ldi	r25, 0x00	; 0
+ 18a:	55 d3       	rcall	.+1706   	; 0x836 <_ZN4RF245writeEPKvh>
+			 myRadio.openReadingPipe(1, addresses[0]);
+ 18c:	44 e6       	ldi	r20, 0x64	; 100
+ 18e:	50 e0       	ldi	r21, 0x00	; 0
+ 190:	61 e0       	ldi	r22, 0x01	; 1
+ 192:	81 e7       	ldi	r24, 0x71	; 113
+ 194:	90 e0       	ldi	r25, 0x00	; 0
+ 196:	4a d1       	rcall	.+660    	; 0x42c <_ZN4RF2415openReadingPipeEhPKh>
+			 myRadio.startListening();
+ 198:	81 e7       	ldi	r24, 0x71	; 113
+ 19a:	90 e0       	ldi	r25, 0x00	; 0
+ 19c:	9e d1       	rcall	.+828    	; 0x4da <_ZN4RF2414startListeningEv>
+			 cbi(PORTC,AlarmBuzzer); // ON ALARM
+ 19e:	ab 98       	cbi	0x15, 3	; 21
+ 1a0:	19 c0       	rjmp	.+50     	; 0x1d4 <main+0x14e>
+			
+		 }
+		 else if(_Receive_1 == '2')
+ 1a2:	82 33       	cpi	r24, 0x32	; 50
+ 1a4:	59 f4       	brne	.+22     	; 0x1bc <main+0x136>
+ 1a6:	2f ef       	ldi	r18, 0xFF	; 255
+ 1a8:	84 e3       	ldi	r24, 0x34	; 52
+ 1aa:	9c e0       	ldi	r25, 0x0C	; 12
+ 1ac:	21 50       	subi	r18, 0x01	; 1
+ 1ae:	80 40       	sbci	r24, 0x00	; 0
+ 1b0:	90 40       	sbci	r25, 0x00	; 0
+ 1b2:	e1 f7       	brne	.-8      	; 0x1ac <main+0x126>
+ 1b4:	00 c0       	rjmp	.+0      	; 0x1b6 <main+0x130>
+ 1b6:	00 00       	nop
+		 {
+			 _delay_ms(200);
+			 sbi(PORTC,AlarmBuzzer); // OFF ALARM
+ 1b8:	ab 9a       	sbi	0x15, 3	; 21
+ 1ba:	0c c0       	rjmp	.+24     	; 0x1d4 <main+0x14e>
+			
+		 }
+		 
+		  else if(_Receive_1 == 'I') // OFF WARNING
+ 1bc:	89 34       	cpi	r24, 0x49	; 73
+ 1be:	51 f4       	brne	.+20     	; 0x1d4 <main+0x14e>
+ 1c0:	2f ef       	ldi	r18, 0xFF	; 255
+ 1c2:	84 e3       	ldi	r24, 0x34	; 52
+ 1c4:	9c e0       	ldi	r25, 0x0C	; 12
+ 1c6:	21 50       	subi	r18, 0x01	; 1
+ 1c8:	80 40       	sbci	r24, 0x00	; 0
+ 1ca:	90 40       	sbci	r25, 0x00	; 0
+ 1cc:	e1 f7       	brne	.-8      	; 0x1c6 <main+0x140>
+ 1ce:	00 c0       	rjmp	.+0      	; 0x1d0 <main+0x14a>
+ 1d0:	00 00       	nop
+		  {
+			  _delay_ms(200);
+			 cbi(PORTC,WarningLed); // OFF WARNING
+ 1d2:	a9 98       	cbi	0x15, 1	; 21
+		  }
+		 
+
+		}
+			
+	if(bit_is_clear(PIND,5))	// Send off Alarm to Center
+ 1d4:	85 99       	sbic	0x10, 5	; 16
+ 1d6:	1a c0       	rjmp	.+52     	; 0x20c <main+0x186>
+	{
+		while(bit_is_clear(PIND,5));
+ 1d8:	85 9b       	sbis	0x10, 5	; 16
+ 1da:	fe cf       	rjmp	.-4      	; 0x1d8 <main+0x152>
+		 myRadio.stopListening();
+ 1dc:	81 e7       	ldi	r24, 0x71	; 113
+ 1de:	90 e0       	ldi	r25, 0x00	; 0
+ 1e0:	70 d2       	rcall	.+1248   	; 0x6c2 <_ZN4RF2413stopListeningEv>
+		 myRadio.openWritingPipe(addresses[1]);
+ 1e2:	6a e6       	ldi	r22, 0x6A	; 106
+ 1e4:	70 e0       	ldi	r23, 0x00	; 0
+ 1e6:	81 e7       	ldi	r24, 0x71	; 113
+ 1e8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ea:	9e d2       	rcall	.+1340   	; 0x728 <_ZN4RF2415openWritingPipeEPKh>
+		 myRadio.write(&_Send_Alarm_Off_1, sizeof(_Send_Alarm_Off_1));
+ 1ec:	41 e0       	ldi	r20, 0x01	; 1
+ 1ee:	62 e6       	ldi	r22, 0x62	; 98
+ 1f0:	70 e0       	ldi	r23, 0x00	; 0
+ 1f2:	81 e7       	ldi	r24, 0x71	; 113
+ 1f4:	90 e0       	ldi	r25, 0x00	; 0
+ 1f6:	1f d3       	rcall	.+1598   	; 0x836 <_ZN4RF245writeEPKvh>
+		 myRadio.openReadingPipe(1, addresses[0]);
+ 1f8:	44 e6       	ldi	r20, 0x64	; 100
+ 1fa:	50 e0       	ldi	r21, 0x00	; 0
+ 1fc:	61 e0       	ldi	r22, 0x01	; 1
+ 1fe:	81 e7       	ldi	r24, 0x71	; 113
+ 200:	90 e0       	ldi	r25, 0x00	; 0
+ 202:	14 d1       	rcall	.+552    	; 0x42c <_ZN4RF2415openReadingPipeEhPKh>
+		 myRadio.startListening();
+ 204:	81 e7       	ldi	r24, 0x71	; 113
+ 206:	90 e0       	ldi	r25, 0x00	; 0
+ 208:	68 d1       	rcall	.+720    	; 0x4da <_ZN4RF2414startListeningEv>
+ 20a:	8a cf       	rjmp	.-236    	; 0x120 <main+0x9a>
+		 //send('Z');
+		 //sbi(PORTC,3);
+		
+	}
+	else if(bit_is_clear(PIND,6))
+ 20c:	86 99       	sbic	0x10, 6	; 16
+ 20e:	04 c0       	rjmp	.+8      	; 0x218 <main+0x192>
+	{
+		while(bit_is_clear(PIND,6));
+ 210:	86 9b       	sbis	0x10, 6	; 16
+ 212:	fe cf       	rjmp	.-4      	; 0x210 <main+0x18a>
+		cbi(PORTC,WarningLed); // OFF WARNING
+ 214:	a9 98       	cbi	0x15, 1	; 21
+ 216:	84 cf       	rjmp	.-248    	; 0x120 <main+0x9a>
+	}
+	
+	else if(bit_is_clear(PIND,7))	// Send Warning to Center
+ 218:	87 99       	sbic	0x10, 7	; 16
+ 21a:	82 cf       	rjmp	.-252    	; 0x120 <main+0x9a>
+	{
+		while(bit_is_clear(PIND,7));
+ 21c:	87 9b       	sbis	0x10, 7	; 16
+ 21e:	fe cf       	rjmp	.-4      	; 0x21c <main+0x196>
+		 myRadio.stopListening();
+ 220:	81 e7       	ldi	r24, 0x71	; 113
+ 222:	90 e0       	ldi	r25, 0x00	; 0
+ 224:	4e d2       	rcall	.+1180   	; 0x6c2 <_ZN4RF2413stopListeningEv>
+		 myRadio.openWritingPipe(addresses[1]);
+ 226:	6a e6       	ldi	r22, 0x6A	; 106
+ 228:	70 e0       	ldi	r23, 0x00	; 0
+ 22a:	81 e7       	ldi	r24, 0x71	; 113
+ 22c:	90 e0       	ldi	r25, 0x00	; 0
+ 22e:	7c d2       	rcall	.+1272   	; 0x728 <_ZN4RF2415openWritingPipeEPKh>
+		 myRadio.write(&_Send_W_1, sizeof(_Send_W_1));
+ 230:	41 e0       	ldi	r20, 0x01	; 1
+ 232:	60 e6       	ldi	r22, 0x60	; 96
+ 234:	70 e0       	ldi	r23, 0x00	; 0
+ 236:	81 e7       	ldi	r24, 0x71	; 113
+ 238:	90 e0       	ldi	r25, 0x00	; 0
+ 23a:	fd d2       	rcall	.+1530   	; 0x836 <_ZN4RF245writeEPKvh>
+		 myRadio.openReadingPipe(1, addresses[0]);
+ 23c:	44 e6       	ldi	r20, 0x64	; 100
+ 23e:	50 e0       	ldi	r21, 0x00	; 0
+ 240:	61 e0       	ldi	r22, 0x01	; 1
+ 242:	81 e7       	ldi	r24, 0x71	; 113
+ 244:	90 e0       	ldi	r25, 0x00	; 0
+ 246:	f2 d0       	rcall	.+484    	; 0x42c <_ZN4RF2415openReadingPipeEhPKh>
+		 myRadio.startListening();
+ 248:	81 e7       	ldi	r24, 0x71	; 113
+ 24a:	90 e0       	ldi	r25, 0x00	; 0
+ 24c:	46 d1       	rcall	.+652    	; 0x4da <_ZN4RF2414startListeningEv>
+		 //send('Z');
+		 sbi(PORTC,WarningLed); // ON WARNING
+ 24e:	a9 9a       	sbi	0x15, 1	; 21
+ 250:	67 cf       	rjmp	.-306    	; 0x120 <main+0x9a>
+
+00000252 <_GLOBAL__sub_I__Z4sendh>:
+{
+while(bit_is_clear(UCSRA,UDRE));// doi den khi bit UDRE = 1
+UDR = c;
+}
+
+RF24 myRadio (SS, CSN);
+ 252:	41 e0       	ldi	r20, 0x01	; 1
+ 254:	50 e0       	ldi	r21, 0x00	; 0
+ 256:	62 e0       	ldi	r22, 0x02	; 2
+ 258:	70 e0       	ldi	r23, 0x00	; 0
+ 25a:	81 e7       	ldi	r24, 0x71	; 113
+ 25c:	90 e0       	ldi	r25, 0x00	; 0
+ 25e:	10 d0       	rcall	.+32     	; 0x280 <_ZN4RF24C1Ejj>
+ 260:	08 95       	ret
+
+00000262 <_Z8SPI_Initv>:
+
+void RF24::powerDown(void)
+{
+	cbi(PORTB,SS);
+	write_register(NRF_CONFIG,read_register(NRF_CONFIG) & ~_BV(PWR_UP));
+}
+ 262:	87 b3       	in	r24, 0x17	; 23
+ 264:	8e 62       	ori	r24, 0x2E	; 46
+ 266:	87 bb       	out	0x17, r24	; 23
+ 268:	c2 98       	cbi	0x18, 2	; 24
+ 26a:	8d b1       	in	r24, 0x0d	; 13
+ 26c:	80 65       	ori	r24, 0x50	; 80
+ 26e:	8d b9       	out	0x0d, r24	; 13
+ 270:	70 9a       	sbi	0x0e, 0	; 14
+ 272:	c2 9a       	sbi	0x18, 2	; 24
+ 274:	08 95       	ret
+
+00000276 <_Z8transferh>:
+ 276:	8f b9       	out	0x0f, r24	; 15
+ 278:	77 9b       	sbis	0x0e, 7	; 14
+ 27a:	fe cf       	rjmp	.-4      	; 0x278 <_Z8transferh+0x2>
+ 27c:	8f b1       	in	r24, 0x0f	; 15
+ 27e:	08 95       	ret
+
+00000280 <_ZN4RF24C1Ejj>:
+ 280:	fc 01       	movw	r30, r24
+ 282:	10 82       	st	Z, r1
+ 284:	80 e2       	ldi	r24, 0x20	; 32
+ 286:	81 83       	std	Z+1, r24	; 0x01
+ 288:	12 82       	std	Z+2, r1	; 0x02
+ 28a:	85 e0       	ldi	r24, 0x05	; 5
+ 28c:	80 87       	std	Z+8, r24	; 0x08
+ 28e:	72 87       	std	Z+10, r23	; 0x0a
+ 290:	61 87       	std	Z+9, r22	; 0x09
+ 292:	54 87       	std	Z+12, r21	; 0x0c
+ 294:	43 87       	std	Z+11, r20	; 0x0b
+ 296:	85 e0       	ldi	r24, 0x05	; 5
+ 298:	90 e0       	ldi	r25, 0x00	; 0
+ 29a:	a0 e0       	ldi	r26, 0x00	; 0
+ 29c:	b0 e0       	ldi	r27, 0x00	; 0
+ 29e:	87 87       	std	Z+15, r24	; 0x0f
+ 2a0:	90 8b       	std	Z+16, r25	; 0x10
+ 2a2:	a1 8b       	std	Z+17, r26	; 0x11
+ 2a4:	b2 8b       	std	Z+18, r27	; 0x12
+ 2a6:	13 82       	std	Z+3, r1	; 0x03
+ 2a8:	08 95       	ret
+
+000002aa <_ZN4RF2414write_registerEhPKhh>:
+ 2aa:	df 92       	push	r13
+ 2ac:	ef 92       	push	r14
+ 2ae:	ff 92       	push	r15
+ 2b0:	0f 93       	push	r16
+ 2b2:	1f 93       	push	r17
+ 2b4:	cf 93       	push	r28
+ 2b6:	df 93       	push	r29
+ 2b8:	7a 01       	movw	r14, r20
+ 2ba:	c2 2f       	mov	r28, r18
+ 2bc:	c1 98       	cbi	0x18, 1	; 24
+ 2be:	86 2f       	mov	r24, r22
+ 2c0:	8f 71       	andi	r24, 0x1F	; 31
+ 2c2:	80 62       	ori	r24, 0x20	; 32
+ 2c4:	d8 df       	rcall	.-80     	; 0x276 <_Z8transferh>
+ 2c6:	d8 2e       	mov	r13, r24
+ 2c8:	8f ef       	ldi	r24, 0xFF	; 255
+ 2ca:	8c 0f       	add	r24, r28
+ 2cc:	cc 23       	and	r28, r28
+ 2ce:	61 f0       	breq	.+24     	; 0x2e8 <_ZN4RF2414write_registerEhPKhh+0x3e>
+ 2d0:	e7 01       	movw	r28, r14
+ 2d2:	08 2f       	mov	r16, r24
+ 2d4:	10 e0       	ldi	r17, 0x00	; 0
+ 2d6:	0f 5f       	subi	r16, 0xFF	; 255
+ 2d8:	1f 4f       	sbci	r17, 0xFF	; 255
+ 2da:	0e 0d       	add	r16, r14
+ 2dc:	1f 1d       	adc	r17, r15
+ 2de:	89 91       	ld	r24, Y+
+ 2e0:	ca df       	rcall	.-108    	; 0x276 <_Z8transferh>
+ 2e2:	c0 17       	cp	r28, r16
+ 2e4:	d1 07       	cpc	r29, r17
+ 2e6:	d9 f7       	brne	.-10     	; 0x2de <_ZN4RF2414write_registerEhPKhh+0x34>
+ 2e8:	c1 9a       	sbi	0x18, 1	; 24
+ 2ea:	8d 2d       	mov	r24, r13
+ 2ec:	df 91       	pop	r29
+ 2ee:	cf 91       	pop	r28
+ 2f0:	1f 91       	pop	r17
+ 2f2:	0f 91       	pop	r16
+ 2f4:	ff 90       	pop	r15
+ 2f6:	ef 90       	pop	r14
+ 2f8:	df 90       	pop	r13
+ 2fa:	08 95       	ret
+
+000002fc <_ZN4RF2414write_registerEhh>:
+ 2fc:	cf 93       	push	r28
+ 2fe:	df 93       	push	r29
+ 300:	d4 2f       	mov	r29, r20
+ 302:	c1 98       	cbi	0x18, 1	; 24
+ 304:	86 2f       	mov	r24, r22
+ 306:	8f 71       	andi	r24, 0x1F	; 31
+ 308:	80 62       	ori	r24, 0x20	; 32
+ 30a:	b5 df       	rcall	.-150    	; 0x276 <_Z8transferh>
+ 30c:	c8 2f       	mov	r28, r24
+ 30e:	8d 2f       	mov	r24, r29
+ 310:	b2 df       	rcall	.-156    	; 0x276 <_Z8transferh>
+ 312:	c1 9a       	sbi	0x18, 1	; 24
+ 314:	8c 2f       	mov	r24, r28
+ 316:	df 91       	pop	r29
+ 318:	cf 91       	pop	r28
+ 31a:	08 95       	ret
+
+0000031c <_ZN4RF2413read_registerEh>:
+ 31c:	c1 98       	cbi	0x18, 1	; 24
+ 31e:	86 2f       	mov	r24, r22
+ 320:	8f 71       	andi	r24, 0x1F	; 31
+ 322:	a9 df       	rcall	.-174    	; 0x276 <_Z8transferh>
+ 324:	8f ef       	ldi	r24, 0xFF	; 255
+ 326:	a7 df       	rcall	.-178    	; 0x276 <_Z8transferh>
+ 328:	c1 9a       	sbi	0x18, 1	; 24
+ 32a:	08 95       	ret
+
+0000032c <_ZN4RF2411setDataRateE15rf24_datarate_e>:
+ 32c:	0f 93       	push	r16
+ 32e:	1f 93       	push	r17
+ 330:	cf 93       	push	r28
+ 332:	df 93       	push	r29
+ 334:	ec 01       	movw	r28, r24
+ 336:	06 2f       	mov	r16, r22
+ 338:	66 e0       	ldi	r22, 0x06	; 6
+ 33a:	f0 df       	rcall	.-32     	; 0x31c <_ZN4RF2413read_registerEh>
+ 33c:	18 2f       	mov	r17, r24
+ 33e:	17 7d       	andi	r17, 0xD7	; 215
+ 340:	02 30       	cpi	r16, 0x02	; 2
+ 342:	51 f4       	brne	.+20     	; 0x358 <_ZN4RF2411setDataRateE15rf24_datarate_e+0x2c>
+ 344:	10 62       	ori	r17, 0x20	; 32
+ 346:	8b e9       	ldi	r24, 0x9B	; 155
+ 348:	90 e0       	ldi	r25, 0x00	; 0
+ 34a:	a0 e0       	ldi	r26, 0x00	; 0
+ 34c:	b0 e0       	ldi	r27, 0x00	; 0
+ 34e:	8b 8b       	std	Y+19, r24	; 0x13
+ 350:	9c 8b       	std	Y+20, r25	; 0x14
+ 352:	ad 8b       	std	Y+21, r26	; 0x15
+ 354:	be 8b       	std	Y+22, r27	; 0x16
+ 356:	14 c0       	rjmp	.+40     	; 0x380 <_ZN4RF2411setDataRateE15rf24_datarate_e+0x54>
+ 358:	01 30       	cpi	r16, 0x01	; 1
+ 35a:	49 f0       	breq	.+18     	; 0x36e <_ZN4RF2411setDataRateE15rf24_datarate_e+0x42>
+ 35c:	85 e5       	ldi	r24, 0x55	; 85
+ 35e:	90 e0       	ldi	r25, 0x00	; 0
+ 360:	a0 e0       	ldi	r26, 0x00	; 0
+ 362:	b0 e0       	ldi	r27, 0x00	; 0
+ 364:	8b 8b       	std	Y+19, r24	; 0x13
+ 366:	9c 8b       	std	Y+20, r25	; 0x14
+ 368:	ad 8b       	std	Y+21, r26	; 0x15
+ 36a:	be 8b       	std	Y+22, r27	; 0x16
+ 36c:	09 c0       	rjmp	.+18     	; 0x380 <_ZN4RF2411setDataRateE15rf24_datarate_e+0x54>
+ 36e:	18 60       	ori	r17, 0x08	; 8
+ 370:	81 e4       	ldi	r24, 0x41	; 65
+ 372:	90 e0       	ldi	r25, 0x00	; 0
+ 374:	a0 e0       	ldi	r26, 0x00	; 0
+ 376:	b0 e0       	ldi	r27, 0x00	; 0
+ 378:	8b 8b       	std	Y+19, r24	; 0x13
+ 37a:	9c 8b       	std	Y+20, r25	; 0x14
+ 37c:	ad 8b       	std	Y+21, r26	; 0x15
+ 37e:	be 8b       	std	Y+22, r27	; 0x16
+ 380:	41 2f       	mov	r20, r17
+ 382:	66 e0       	ldi	r22, 0x06	; 6
+ 384:	ce 01       	movw	r24, r28
+ 386:	ba df       	rcall	.-140    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 388:	66 e0       	ldi	r22, 0x06	; 6
+ 38a:	ce 01       	movw	r24, r28
+ 38c:	c7 df       	rcall	.-114    	; 0x31c <_ZN4RF2413read_registerEh>
+ 38e:	91 e0       	ldi	r25, 0x01	; 1
+ 390:	18 13       	cpse	r17, r24
+ 392:	90 e0       	ldi	r25, 0x00	; 0
+ 394:	89 2f       	mov	r24, r25
+ 396:	df 91       	pop	r29
+ 398:	cf 91       	pop	r28
+ 39a:	1f 91       	pop	r17
+ 39c:	0f 91       	pop	r16
+ 39e:	08 95       	ret
+
+000003a0 <_ZN4RF2415toggle_featuresEv>:
+ 3a0:	c1 98       	cbi	0x18, 1	; 24
+ 3a2:	80 e5       	ldi	r24, 0x50	; 80
+ 3a4:	68 df       	rcall	.-304    	; 0x276 <_Z8transferh>
+ 3a6:	83 e7       	ldi	r24, 0x73	; 115
+ 3a8:	66 df       	rcall	.-308    	; 0x276 <_Z8transferh>
+ 3aa:	c1 9a       	sbi	0x18, 1	; 24
+ 3ac:	08 95       	ret
+
+000003ae <_ZN4RF2410setChannelEh>:
+ 3ae:	6d 37       	cpi	r22, 0x7D	; 125
+ 3b0:	10 f4       	brcc	.+4      	; 0x3b6 <_ZN4RF2410setChannelEh+0x8>
+ 3b2:	46 2f       	mov	r20, r22
+ 3b4:	01 c0       	rjmp	.+2      	; 0x3b8 <_ZN4RF2410setChannelEh+0xa>
+ 3b6:	4d e7       	ldi	r20, 0x7D	; 125
+ 3b8:	65 e0       	ldi	r22, 0x05	; 5
+ 3ba:	a0 df       	rcall	.-192    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 3bc:	08 95       	ret
+
+000003be <_ZN4RF248spiTransEh>:
+ 3be:	86 2f       	mov	r24, r22
+ 3c0:	c1 98       	cbi	0x18, 1	; 24
+ 3c2:	59 df       	rcall	.-334    	; 0x276 <_Z8transferh>
+ 3c4:	c1 9a       	sbi	0x18, 1	; 24
+ 3c6:	08 95       	ret
+
+000003c8 <_ZN4RF248flush_rxEv>:
+ 3c8:	62 ee       	ldi	r22, 0xE2	; 226
+ 3ca:	f9 df       	rcall	.-14     	; 0x3be <_ZN4RF248spiTransEh>
+ 3cc:	08 95       	ret
+
+000003ce <_ZN4RF248flush_txEv>:
+ 3ce:	61 ee       	ldi	r22, 0xE1	; 225
+ 3d0:	f6 df       	rcall	.-20     	; 0x3be <_ZN4RF248spiTransEh>
+ 3d2:	08 95       	ret
+
+000003d4 <_ZN4RF247powerUpEv>:
+ 3d4:	cf 93       	push	r28
+ 3d6:	df 93       	push	r29
+ 3d8:	ec 01       	movw	r28, r24
+ 3da:	60 e0       	ldi	r22, 0x00	; 0
+ 3dc:	9f df       	rcall	.-194    	; 0x31c <_ZN4RF2413read_registerEh>
+ 3de:	81 fd       	sbrc	r24, 1
+ 3e0:	0b c0       	rjmp	.+22     	; 0x3f8 <_ZN4RF247powerUpEv+0x24>
+ 3e2:	48 2f       	mov	r20, r24
+ 3e4:	42 60       	ori	r20, 0x02	; 2
+ 3e6:	60 e0       	ldi	r22, 0x00	; 0
+ 3e8:	ce 01       	movw	r24, r28
+ 3ea:	88 df       	rcall	.-240    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 3ec:	87 ea       	ldi	r24, 0xA7	; 167
+ 3ee:	91 e6       	ldi	r25, 0x61	; 97
+ 3f0:	01 97       	sbiw	r24, 0x01	; 1
+ 3f2:	f1 f7       	brne	.-4      	; 0x3f0 <_ZN4RF247powerUpEv+0x1c>
+ 3f4:	00 c0       	rjmp	.+0      	; 0x3f6 <_ZN4RF247powerUpEv+0x22>
+ 3f6:	00 00       	nop
+ 3f8:	df 91       	pop	r29
+ 3fa:	cf 91       	pop	r28
+ 3fc:	08 95       	ret
+
+000003fe <_ZN4RF2410setPALevelEh>:
+ 3fe:	0f 93       	push	r16
+ 400:	1f 93       	push	r17
+ 402:	cf 93       	push	r28
+ 404:	8c 01       	movw	r16, r24
+ 406:	c6 2f       	mov	r28, r22
+ 408:	66 e0       	ldi	r22, 0x06	; 6
+ 40a:	88 df       	rcall	.-240    	; 0x31c <_ZN4RF2413read_registerEh>
+ 40c:	88 7f       	andi	r24, 0xF8	; 248
+ 40e:	c4 30       	cpi	r28, 0x04	; 4
+ 410:	18 f4       	brcc	.+6      	; 0x418 <__LOCK_REGION_LENGTH__+0x18>
+ 412:	cc 0f       	add	r28, r28
+ 414:	cf 5f       	subi	r28, 0xFF	; 255
+ 416:	01 c0       	rjmp	.+2      	; 0x41a <__LOCK_REGION_LENGTH__+0x1a>
+ 418:	c7 e0       	ldi	r28, 0x07	; 7
+ 41a:	4c 2f       	mov	r20, r28
+ 41c:	48 2b       	or	r20, r24
+ 41e:	66 e0       	ldi	r22, 0x06	; 6
+ 420:	c8 01       	movw	r24, r16
+ 422:	6c df       	rcall	.-296    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 424:	cf 91       	pop	r28
+ 426:	1f 91       	pop	r17
+ 428:	0f 91       	pop	r16
+ 42a:	08 95       	ret
+
+0000042c <_ZN4RF2415openReadingPipeEhPKh>:
+ 42c:	0f 93       	push	r16
+ 42e:	1f 93       	push	r17
+ 430:	cf 93       	push	r28
+ 432:	df 93       	push	r29
+ 434:	67 30       	cpi	r22, 0x07	; 7
+ 436:	78 f5       	brcc	.+94     	; 0x496 <__stack+0x37>
+ 438:	c6 2f       	mov	r28, r22
+ 43a:	8c 01       	movw	r16, r24
+ 43c:	62 30       	cpi	r22, 0x02	; 2
+ 43e:	48 f4       	brcc	.+18     	; 0x452 <_ZN4RF2415openReadingPipeEhPKh+0x26>
+ 440:	e6 2f       	mov	r30, r22
+ 442:	f0 e0       	ldi	r31, 0x00	; 0
+ 444:	e4 5d       	subi	r30, 0xD4	; 212
+ 446:	ff 4f       	sbci	r31, 0xFF	; 255
+ 448:	64 91       	lpm	r22, Z
+ 44a:	fc 01       	movw	r30, r24
+ 44c:	20 85       	ldd	r18, Z+8	; 0x08
+ 44e:	2d df       	rcall	.-422    	; 0x2aa <_ZN4RF2414write_registerEhPKhh>
+ 450:	07 c0       	rjmp	.+14     	; 0x460 <__stack+0x1>
+ 452:	e6 2f       	mov	r30, r22
+ 454:	f0 e0       	ldi	r31, 0x00	; 0
+ 456:	e4 5d       	subi	r30, 0xD4	; 212
+ 458:	ff 4f       	sbci	r31, 0xFF	; 255
+ 45a:	64 91       	lpm	r22, Z
+ 45c:	21 e0       	ldi	r18, 0x01	; 1
+ 45e:	25 df       	rcall	.-438    	; 0x2aa <_ZN4RF2414write_registerEhPKhh>
+ 460:	d0 e0       	ldi	r29, 0x00	; 0
+ 462:	fe 01       	movw	r30, r28
+ 464:	ea 5d       	subi	r30, 0xDA	; 218
+ 466:	ff 4f       	sbci	r31, 0xFF	; 255
+ 468:	64 91       	lpm	r22, Z
+ 46a:	f8 01       	movw	r30, r16
+ 46c:	41 81       	ldd	r20, Z+1	; 0x01
+ 46e:	c8 01       	movw	r24, r16
+ 470:	45 df       	rcall	.-374    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 472:	62 e0       	ldi	r22, 0x02	; 2
+ 474:	c8 01       	movw	r24, r16
+ 476:	52 df       	rcall	.-348    	; 0x31c <_ZN4RF2413read_registerEh>
+ 478:	fe 01       	movw	r30, r28
+ 47a:	ee 5c       	subi	r30, 0xCE	; 206
+ 47c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 47e:	e4 91       	lpm	r30, Z
+ 480:	41 e0       	ldi	r20, 0x01	; 1
+ 482:	50 e0       	ldi	r21, 0x00	; 0
+ 484:	02 c0       	rjmp	.+4      	; 0x48a <__stack+0x2b>
+ 486:	44 0f       	add	r20, r20
+ 488:	55 1f       	adc	r21, r21
+ 48a:	ea 95       	dec	r30
+ 48c:	e2 f7       	brpl	.-8      	; 0x486 <__stack+0x27>
+ 48e:	48 2b       	or	r20, r24
+ 490:	62 e0       	ldi	r22, 0x02	; 2
+ 492:	c8 01       	movw	r24, r16
+ 494:	33 df       	rcall	.-410    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 496:	df 91       	pop	r29
+ 498:	cf 91       	pop	r28
+ 49a:	1f 91       	pop	r17
+ 49c:	0f 91       	pop	r16
+ 49e:	08 95       	ret
+
+000004a0 <_ZN4RF2416closeReadingPipeEh>:
+ 4a0:	0f 93       	push	r16
+ 4a2:	1f 93       	push	r17
+ 4a4:	cf 93       	push	r28
+ 4a6:	8c 01       	movw	r16, r24
+ 4a8:	c6 2f       	mov	r28, r22
+ 4aa:	62 e0       	ldi	r22, 0x02	; 2
+ 4ac:	37 df       	rcall	.-402    	; 0x31c <_ZN4RF2413read_registerEh>
+ 4ae:	ec 2f       	mov	r30, r28
+ 4b0:	f0 e0       	ldi	r31, 0x00	; 0
+ 4b2:	ee 5c       	subi	r30, 0xCE	; 206
+ 4b4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4b6:	e4 91       	lpm	r30, Z
+ 4b8:	21 e0       	ldi	r18, 0x01	; 1
+ 4ba:	30 e0       	ldi	r19, 0x00	; 0
+ 4bc:	02 c0       	rjmp	.+4      	; 0x4c2 <_ZN4RF2416closeReadingPipeEh+0x22>
+ 4be:	22 0f       	add	r18, r18
+ 4c0:	33 1f       	adc	r19, r19
+ 4c2:	ea 95       	dec	r30
+ 4c4:	e2 f7       	brpl	.-8      	; 0x4be <_ZN4RF2416closeReadingPipeEh+0x1e>
+ 4c6:	20 95       	com	r18
+ 4c8:	42 2f       	mov	r20, r18
+ 4ca:	48 23       	and	r20, r24
+ 4cc:	62 e0       	ldi	r22, 0x02	; 2
+ 4ce:	c8 01       	movw	r24, r16
+ 4d0:	15 df       	rcall	.-470    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 4d2:	cf 91       	pop	r28
+ 4d4:	1f 91       	pop	r17
+ 4d6:	0f 91       	pop	r16
+ 4d8:	08 95       	ret
+
+000004da <_ZN4RF2414startListeningEv>:
+ 4da:	cf 93       	push	r28
+ 4dc:	df 93       	push	r29
+ 4de:	ec 01       	movw	r28, r24
+ 4e0:	79 df       	rcall	.-270    	; 0x3d4 <_ZN4RF247powerUpEv>
+ 4e2:	60 e0       	ldi	r22, 0x00	; 0
+ 4e4:	ce 01       	movw	r24, r28
+ 4e6:	1a df       	rcall	.-460    	; 0x31c <_ZN4RF2413read_registerEh>
+ 4e8:	48 2f       	mov	r20, r24
+ 4ea:	41 60       	ori	r20, 0x01	; 1
+ 4ec:	60 e0       	ldi	r22, 0x00	; 0
+ 4ee:	ce 01       	movw	r24, r28
+ 4f0:	05 df       	rcall	.-502    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 4f2:	40 e7       	ldi	r20, 0x70	; 112
+ 4f4:	67 e0       	ldi	r22, 0x07	; 7
+ 4f6:	ce 01       	movw	r24, r28
+ 4f8:	01 df       	rcall	.-510    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 4fa:	c2 9a       	sbi	0x18, 2	; 24
+ 4fc:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4fe:	88 23       	and	r24, r24
+ 500:	41 f0       	breq	.+16     	; 0x512 <_ZN4RF2414startListeningEv+0x38>
+ 502:	28 85       	ldd	r18, Y+8	; 0x08
+ 504:	ae 01       	movw	r20, r28
+ 506:	4d 5f       	subi	r20, 0xFD	; 253
+ 508:	5f 4f       	sbci	r21, 0xFF	; 255
+ 50a:	6a e0       	ldi	r22, 0x0A	; 10
+ 50c:	ce 01       	movw	r24, r28
+ 50e:	cd de       	rcall	.-614    	; 0x2aa <_ZN4RF2414write_registerEhPKhh>
+ 510:	03 c0       	rjmp	.+6      	; 0x518 <_ZN4RF2414startListeningEv+0x3e>
+ 512:	60 e0       	ldi	r22, 0x00	; 0
+ 514:	ce 01       	movw	r24, r28
+ 516:	c4 df       	rcall	.-120    	; 0x4a0 <_ZN4RF2416closeReadingPipeEh>
+ 518:	6d e1       	ldi	r22, 0x1D	; 29
+ 51a:	ce 01       	movw	r24, r28
+ 51c:	ff de       	rcall	.-514    	; 0x31c <_ZN4RF2413read_registerEh>
+ 51e:	81 ff       	sbrs	r24, 1
+ 520:	02 c0       	rjmp	.+4      	; 0x526 <_ZN4RF2414startListeningEv+0x4c>
+ 522:	ce 01       	movw	r24, r28
+ 524:	54 df       	rcall	.-344    	; 0x3ce <_ZN4RF248flush_txEv>
+ 526:	df 91       	pop	r29
+ 528:	cf 91       	pop	r28
+ 52a:	08 95       	ret
+
+0000052c <_ZN4RF245beginEv>:
+ 52c:	1f 93       	push	r17
+ 52e:	cf 93       	push	r28
+ 530:	df 93       	push	r29
+ 532:	ec 01       	movw	r28, r24
+ 534:	96 de       	rcall	.-724    	; 0x262 <_Z8SPI_Initv>
+ 536:	c1 9a       	sbi	0x18, 1	; 24
+ 538:	2f e9       	ldi	r18, 0x9F	; 159
+ 53a:	88 e6       	ldi	r24, 0x68	; 104
+ 53c:	96 e0       	ldi	r25, 0x06	; 6
+ 53e:	21 50       	subi	r18, 0x01	; 1
+ 540:	80 40       	sbci	r24, 0x00	; 0
+ 542:	90 40       	sbci	r25, 0x00	; 0
+ 544:	e1 f7       	brne	.-8      	; 0x53e <_ZN4RF245beginEv+0x12>
+ 546:	00 c0       	rjmp	.+0      	; 0x548 <_ZN4RF245beginEv+0x1c>
+ 548:	00 00       	nop
+ 54a:	4c e0       	ldi	r20, 0x0C	; 12
+ 54c:	60 e0       	ldi	r22, 0x00	; 0
+ 54e:	ce 01       	movw	r24, r28
+ 550:	d5 de       	rcall	.-598    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 552:	4f e5       	ldi	r20, 0x5F	; 95
+ 554:	64 e0       	ldi	r22, 0x04	; 4
+ 556:	ce 01       	movw	r24, r28
+ 558:	d1 de       	rcall	.-606    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 55a:	62 e0       	ldi	r22, 0x02	; 2
+ 55c:	ce 01       	movw	r24, r28
+ 55e:	e6 de       	rcall	.-564    	; 0x32c <_ZN4RF2411setDataRateE15rf24_datarate_e>
+ 560:	88 23       	and	r24, r24
+ 562:	11 f0       	breq	.+4      	; 0x568 <_ZN4RF245beginEv+0x3c>
+ 564:	81 e0       	ldi	r24, 0x01	; 1
+ 566:	88 83       	st	Y, r24
+ 568:	66 e0       	ldi	r22, 0x06	; 6
+ 56a:	ce 01       	movw	r24, r28
+ 56c:	d7 de       	rcall	.-594    	; 0x31c <_ZN4RF2413read_registerEh>
+ 56e:	18 2f       	mov	r17, r24
+ 570:	60 e0       	ldi	r22, 0x00	; 0
+ 572:	ce 01       	movw	r24, r28
+ 574:	db de       	rcall	.-586    	; 0x32c <_ZN4RF2411setDataRateE15rf24_datarate_e>
+ 576:	ce 01       	movw	r24, r28
+ 578:	13 df       	rcall	.-474    	; 0x3a0 <_ZN4RF2415toggle_featuresEv>
+ 57a:	40 e0       	ldi	r20, 0x00	; 0
+ 57c:	6d e1       	ldi	r22, 0x1D	; 29
+ 57e:	ce 01       	movw	r24, r28
+ 580:	bd de       	rcall	.-646    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 582:	40 e0       	ldi	r20, 0x00	; 0
+ 584:	6c e1       	ldi	r22, 0x1C	; 28
+ 586:	ce 01       	movw	r24, r28
+ 588:	b9 de       	rcall	.-654    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 58a:	1a 82       	std	Y+2, r1	; 0x02
+ 58c:	40 e7       	ldi	r20, 0x70	; 112
+ 58e:	67 e0       	ldi	r22, 0x07	; 7
+ 590:	ce 01       	movw	r24, r28
+ 592:	b4 de       	rcall	.-664    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 594:	6c e4       	ldi	r22, 0x4C	; 76
+ 596:	ce 01       	movw	r24, r28
+ 598:	0a df       	rcall	.-492    	; 0x3ae <_ZN4RF2410setChannelEh>
+ 59a:	ce 01       	movw	r24, r28
+ 59c:	15 df       	rcall	.-470    	; 0x3c8 <_ZN4RF248flush_rxEv>
+ 59e:	ce 01       	movw	r24, r28
+ 5a0:	16 df       	rcall	.-468    	; 0x3ce <_ZN4RF248flush_txEv>
+ 5a2:	ce 01       	movw	r24, r28
+ 5a4:	17 df       	rcall	.-466    	; 0x3d4 <_ZN4RF247powerUpEv>
+ 5a6:	60 e0       	ldi	r22, 0x00	; 0
+ 5a8:	ce 01       	movw	r24, r28
+ 5aa:	b8 de       	rcall	.-656    	; 0x31c <_ZN4RF2413read_registerEh>
+ 5ac:	48 2f       	mov	r20, r24
+ 5ae:	4e 7f       	andi	r20, 0xFE	; 254
+ 5b0:	60 e0       	ldi	r22, 0x00	; 0
+ 5b2:	ce 01       	movw	r24, r28
+ 5b4:	a3 de       	rcall	.-698    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 5b6:	11 50       	subi	r17, 0x01	; 1
+ 5b8:	81 e0       	ldi	r24, 0x01	; 1
+ 5ba:	1e 3f       	cpi	r17, 0xFE	; 254
+ 5bc:	08 f0       	brcs	.+2      	; 0x5c0 <_ZN4RF245beginEv+0x94>
+ 5be:	80 e0       	ldi	r24, 0x00	; 0
+ 5c0:	df 91       	pop	r29
+ 5c2:	cf 91       	pop	r28
+ 5c4:	1f 91       	pop	r17
+ 5c6:	08 95       	ret
+
+000005c8 <_ZN4RF2410get_statusEv>:
+ 5c8:	6f ef       	ldi	r22, 0xFF	; 255
+ 5ca:	f9 de       	rcall	.-526    	; 0x3be <_ZN4RF248spiTransEh>
+ 5cc:	08 95       	ret
+
+000005ce <_ZN4RF249availableEPh>:
+ 5ce:	0f 93       	push	r16
+ 5d0:	1f 93       	push	r17
+ 5d2:	cf 93       	push	r28
+ 5d4:	df 93       	push	r29
+ 5d6:	ec 01       	movw	r28, r24
+ 5d8:	8b 01       	movw	r16, r22
+ 5da:	67 e1       	ldi	r22, 0x17	; 23
+ 5dc:	9f de       	rcall	.-706    	; 0x31c <_ZN4RF2413read_registerEh>
+ 5de:	80 fd       	sbrc	r24, 0
+ 5e0:	0d c0       	rjmp	.+26     	; 0x5fc <_ZN4RF249availableEPh+0x2e>
+ 5e2:	01 15       	cp	r16, r1
+ 5e4:	11 05       	cpc	r17, r1
+ 5e6:	61 f0       	breq	.+24     	; 0x600 <_ZN4RF249availableEPh+0x32>
+ 5e8:	ce 01       	movw	r24, r28
+ 5ea:	ee df       	rcall	.-36     	; 0x5c8 <_ZN4RF2410get_statusEv>
+ 5ec:	90 e0       	ldi	r25, 0x00	; 0
+ 5ee:	95 95       	asr	r25
+ 5f0:	87 95       	ror	r24
+ 5f2:	87 70       	andi	r24, 0x07	; 7
+ 5f4:	f8 01       	movw	r30, r16
+ 5f6:	80 83       	st	Z, r24
+ 5f8:	81 e0       	ldi	r24, 0x01	; 1
+ 5fa:	03 c0       	rjmp	.+6      	; 0x602 <_ZN4RF249availableEPh+0x34>
+ 5fc:	80 e0       	ldi	r24, 0x00	; 0
+ 5fe:	01 c0       	rjmp	.+2      	; 0x602 <_ZN4RF249availableEPh+0x34>
+ 600:	81 e0       	ldi	r24, 0x01	; 1
+ 602:	df 91       	pop	r29
+ 604:	cf 91       	pop	r28
+ 606:	1f 91       	pop	r17
+ 608:	0f 91       	pop	r16
+ 60a:	08 95       	ret
+
+0000060c <_ZN4RF249availableEv>:
+ 60c:	60 e0       	ldi	r22, 0x00	; 0
+ 60e:	70 e0       	ldi	r23, 0x00	; 0
+ 610:	de df       	rcall	.-68     	; 0x5ce <_ZN4RF249availableEPh>
+ 612:	08 95       	ret
+
+00000614 <_ZN4RF2412read_payloadEPvh>:
+ 614:	bf 92       	push	r11
+ 616:	cf 92       	push	r12
+ 618:	df 92       	push	r13
+ 61a:	ef 92       	push	r14
+ 61c:	ff 92       	push	r15
+ 61e:	0f 93       	push	r16
+ 620:	1f 93       	push	r17
+ 622:	cf 93       	push	r28
+ 624:	df 93       	push	r29
+ 626:	6b 01       	movw	r12, r22
+ 628:	fc 01       	movw	r30, r24
+ 62a:	c1 81       	ldd	r28, Z+1	; 0x01
+ 62c:	1c 2f       	mov	r17, r28
+ 62e:	4c 17       	cp	r20, r28
+ 630:	08 f4       	brcc	.+2      	; 0x634 <_ZN4RF2412read_payloadEPvh+0x20>
+ 632:	14 2f       	mov	r17, r20
+ 634:	fc 01       	movw	r30, r24
+ 636:	82 81       	ldd	r24, Z+2	; 0x02
+ 638:	81 11       	cpse	r24, r1
+ 63a:	23 c0       	rjmp	.+70     	; 0x682 <_ZN4RF2412read_payloadEPvh+0x6e>
+ 63c:	0c 2f       	mov	r16, r28
+ 63e:	01 1b       	sub	r16, r17
+ 640:	c1 98       	cbi	0x18, 1	; 24
+ 642:	81 e6       	ldi	r24, 0x61	; 97
+ 644:	18 de       	rcall	.-976    	; 0x276 <_Z8transferh>
+ 646:	b8 2e       	mov	r11, r24
+ 648:	ee 24       	eor	r14, r14
+ 64a:	ea 94       	dec	r14
+ 64c:	e1 0e       	add	r14, r17
+ 64e:	11 11       	cpse	r17, r1
+ 650:	04 c0       	rjmp	.+8      	; 0x65a <_ZN4RF2412read_payloadEPvh+0x46>
+ 652:	01 11       	cpse	r16, r1
+ 654:	10 c0       	rjmp	.+32     	; 0x676 <_ZN4RF2412read_payloadEPvh+0x62>
+ 656:	1e c0       	rjmp	.+60     	; 0x694 <_ZN4RF2412read_payloadEPvh+0x80>
+ 658:	00 e0       	ldi	r16, 0x00	; 0
+ 65a:	e6 01       	movw	r28, r12
+ 65c:	f1 2c       	mov	r15, r1
+ 65e:	ff ef       	ldi	r31, 0xFF	; 255
+ 660:	ef 1a       	sub	r14, r31
+ 662:	ff 0a       	sbc	r15, r31
+ 664:	ec 0c       	add	r14, r12
+ 666:	fd 1c       	adc	r15, r13
+ 668:	8f ef       	ldi	r24, 0xFF	; 255
+ 66a:	05 de       	rcall	.-1014   	; 0x276 <_Z8transferh>
+ 66c:	89 93       	st	Y+, r24
+ 66e:	ec 16       	cp	r14, r28
+ 670:	fd 06       	cpc	r15, r29
+ 672:	d1 f7       	brne	.-12     	; 0x668 <_ZN4RF2412read_payloadEPvh+0x54>
+ 674:	ee cf       	rjmp	.-36     	; 0x652 <_ZN4RF2412read_payloadEPvh+0x3e>
+ 676:	c0 2f       	mov	r28, r16
+ 678:	8f ef       	ldi	r24, 0xFF	; 255
+ 67a:	fd dd       	rcall	.-1030   	; 0x276 <_Z8transferh>
+ 67c:	c1 50       	subi	r28, 0x01	; 1
+ 67e:	e1 f7       	brne	.-8      	; 0x678 <_ZN4RF2412read_payloadEPvh+0x64>
+ 680:	09 c0       	rjmp	.+18     	; 0x694 <_ZN4RF2412read_payloadEPvh+0x80>
+ 682:	c1 98       	cbi	0x18, 1	; 24
+ 684:	81 e6       	ldi	r24, 0x61	; 97
+ 686:	f7 dd       	rcall	.-1042   	; 0x276 <_Z8transferh>
+ 688:	b8 2e       	mov	r11, r24
+ 68a:	ee 24       	eor	r14, r14
+ 68c:	ea 94       	dec	r14
+ 68e:	e1 0e       	add	r14, r17
+ 690:	11 11       	cpse	r17, r1
+ 692:	e2 cf       	rjmp	.-60     	; 0x658 <_ZN4RF2412read_payloadEPvh+0x44>
+ 694:	c1 9a       	sbi	0x18, 1	; 24
+ 696:	8b 2d       	mov	r24, r11
+ 698:	df 91       	pop	r29
+ 69a:	cf 91       	pop	r28
+ 69c:	1f 91       	pop	r17
+ 69e:	0f 91       	pop	r16
+ 6a0:	ff 90       	pop	r15
+ 6a2:	ef 90       	pop	r14
+ 6a4:	df 90       	pop	r13
+ 6a6:	cf 90       	pop	r12
+ 6a8:	bf 90       	pop	r11
+ 6aa:	08 95       	ret
+
+000006ac <_ZN4RF244readEPvh>:
+ 6ac:	cf 93       	push	r28
+ 6ae:	df 93       	push	r29
+ 6b0:	ec 01       	movw	r28, r24
+ 6b2:	b0 df       	rcall	.-160    	; 0x614 <_ZN4RF2412read_payloadEPvh>
+ 6b4:	40 e7       	ldi	r20, 0x70	; 112
+ 6b6:	67 e0       	ldi	r22, 0x07	; 7
+ 6b8:	ce 01       	movw	r24, r28
+ 6ba:	20 de       	rcall	.-960    	; 0x2fc <_ZN4RF2414write_registerEhh>
+ 6bc:	df 91       	pop	r29
+ 6be:	cf 91       	pop	r28
+ 6c0:	08 95       	ret
+
+000006c2 <_ZN4RF2413stopListeningEv>:
+
+void RF24::stopListening(void)
+{
+ 6c2:	cf 93       	push	r28
+ 6c4:	df 93       	push	r29
+ 6c6:	ec 01       	movw	r28, r24
+	//ce(LOW);
+	cbi(PORTB,SS);
+ 6c8:	c2 98       	cbi	0x18, 2	; 24
+ 6ca:	8f e4       	ldi	r24, 0x4F	; 79
+ 6cc:	93 ec       	ldi	r25, 0xC3	; 195
+ 6ce:	01 97       	sbiw	r24, 0x01	; 1
+ 6d0:	f1 f7       	brne	.-4      	; 0x6ce <_ZN4RF2413stopListeningEv+0xc>
+ 6d2:	00 c0       	rjmp	.+0      	; 0x6d4 <_ZN4RF2413stopListeningEv+0x12>
+ 6d4:	00 00       	nop
+	_delay_ms(10);
+	//delayMicroseconds(txDelay);
+	
+	if(read_register(FEATURE) & _BV(EN_ACK_PAY)){
+ 6d6:	6d e1       	ldi	r22, 0x1D	; 29
+ 6d8:	ce 01       	movw	r24, r28
+ 6da:	20 de       	rcall	.-960    	; 0x31c <_ZN4RF2413read_registerEh>
+ 6dc:	81 ff       	sbrs	r24, 1
+ 6de:	08 c0       	rjmp	.+16     	; 0x6f0 <_ZN4RF2413stopListeningEv+0x2e>
+ 6e0:	8f e4       	ldi	r24, 0x4F	; 79
+ 6e2:	93 ec       	ldi	r25, 0xC3	; 195
+ 6e4:	01 97       	sbiw	r24, 0x01	; 1
+ 6e6:	f1 f7       	brne	.-4      	; 0x6e4 <_ZN4RF2413stopListeningEv+0x22>
+ 6e8:	00 c0       	rjmp	.+0      	; 0x6ea <_ZN4RF2413stopListeningEv+0x28>
+ 6ea:	00 00       	nop
+		_delay_ms(10); //200
+		flush_tx();
+ 6ec:	ce 01       	movw	r24, r28
+ 6ee:	6f de       	rcall	.-802    	; 0x3ce <_ZN4RF248flush_txEv>
+	}
+	//flush_rx();
+	write_register(NRF_CONFIG, ( read_register(NRF_CONFIG) ) & ~_BV(PRIM_RX) );
+ 6f0:	60 e0       	ldi	r22, 0x00	; 0
+ 6f2:	ce 01       	movw	r24, r28
+ 6f4:	13 de       	rcall	.-986    	; 0x31c <_ZN4RF2413read_registerEh>
+ 6f6:	48 2f       	mov	r20, r24
+ 6f8:	4e 7f       	andi	r20, 0xFE	; 254
+ 6fa:	60 e0       	ldi	r22, 0x00	; 0
+ 6fc:	ce 01       	movw	r24, r28
+ 6fe:	fe dd       	rcall	.-1028   	; 0x2fc <_ZN4RF2414write_registerEhh>
+	if (ce_pin == csn_pin) {
+		powerDown();
+		powerUp();
+	}
+	#endif
+	write_register(EN_RXADDR,read_register(EN_RXADDR) | _BV(pgm_read_byte(&child_pipe_enable[0]))); // Enable RX on pipe0
+ 700:	62 e0       	ldi	r22, 0x02	; 2
+ 702:	ce 01       	movw	r24, r28
+ 704:	0b de       	rcall	.-1002   	; 0x31c <_ZN4RF2413read_registerEh>
+ 706:	e2 e3       	ldi	r30, 0x32	; 50
+ 708:	f0 e0       	ldi	r31, 0x00	; 0
+ 70a:	e4 91       	lpm	r30, Z
+ 70c:	41 e0       	ldi	r20, 0x01	; 1
+ 70e:	50 e0       	ldi	r21, 0x00	; 0
+ 710:	02 c0       	rjmp	.+4      	; 0x716 <_ZN4RF2413stopListeningEv+0x54>
+ 712:	44 0f       	add	r20, r20
+ 714:	55 1f       	adc	r21, r21
+ 716:	ea 95       	dec	r30
+ 718:	e2 f7       	brpl	.-8      	; 0x712 <_ZN4RF2413stopListeningEv+0x50>
+ 71a:	48 2b       	or	r20, r24
+ 71c:	62 e0       	ldi	r22, 0x02	; 2
+ 71e:	ce 01       	movw	r24, r28
+ 720:	ed dd       	rcall	.-1062   	; 0x2fc <_ZN4RF2414write_registerEhh>
+	
+	//delayMicroseconds(100);
+
+}
+ 722:	df 91       	pop	r29
+ 724:	cf 91       	pop	r28
+ 726:	08 95       	ret
+
+00000728 <_ZN4RF2415openWritingPipeEPKh>:
+	//write_register(RX_PW_P0,payload_size);
+//}
+
+/****************************************************************************/
+void RF24::openWritingPipe(const uint8_t *address)
+{
+ 728:	0f 93       	push	r16
+ 72a:	1f 93       	push	r17
+ 72c:	cf 93       	push	r28
+ 72e:	df 93       	push	r29
+ 730:	ec 01       	movw	r28, r24
+ 732:	8b 01       	movw	r16, r22
+	// Note that AVR 8-bit uC's store this LSB first, and the NRF24L01(+)
+	// expects it LSB first too, so we're good.
+
+	write_register(RX_ADDR_P0,address, addr_width);
+ 734:	28 85       	ldd	r18, Y+8	; 0x08
+ 736:	ab 01       	movw	r20, r22
+ 738:	6a e0       	ldi	r22, 0x0A	; 10
+ 73a:	b7 dd       	rcall	.-1170   	; 0x2aa <_ZN4RF2414write_registerEhPKhh>
+	write_register(TX_ADDR, address, addr_width);
+ 73c:	28 85       	ldd	r18, Y+8	; 0x08
+ 73e:	a8 01       	movw	r20, r16
+ 740:	60 e1       	ldi	r22, 0x10	; 16
+ 742:	ce 01       	movw	r24, r28
+ 744:	b2 dd       	rcall	.-1180   	; 0x2aa <_ZN4RF2414write_registerEhPKhh>
+
+	//const uint8_t max_payload_size = 32;
+	//write_register(RX_PW_P0,rf24_min(payload_size,max_payload_size));
+	write_register(RX_PW_P0,payload_size);
+ 746:	49 81       	ldd	r20, Y+1	; 0x01
+ 748:	61 e1       	ldi	r22, 0x11	; 17
+ 74a:	ce 01       	movw	r24, r28
+ 74c:	d7 dd       	rcall	.-1106   	; 0x2fc <_ZN4RF2414write_registerEhh>
+}
+ 74e:	df 91       	pop	r29
+ 750:	cf 91       	pop	r28
+ 752:	1f 91       	pop	r17
+ 754:	0f 91       	pop	r16
+ 756:	08 95       	ret
+
+00000758 <_ZN4RF2413write_payloadEPKvhh>:
+	}
+
+}
+
+uint8_t RF24::write_payload(const void* buf, uint8_t data_len, const uint8_t writeType)
+{
+ 758:	bf 92       	push	r11
+ 75a:	cf 92       	push	r12
+ 75c:	df 92       	push	r13
+ 75e:	ef 92       	push	r14
+ 760:	ff 92       	push	r15
+ 762:	0f 93       	push	r16
+ 764:	1f 93       	push	r17
+ 766:	cf 93       	push	r28
+ 768:	df 93       	push	r29
+ 76a:	fc 01       	movw	r30, r24
+ 76c:	6b 01       	movw	r12, r22
+ 76e:	82 2f       	mov	r24, r18
+	uint8_t status;
+	const uint8_t* current = reinterpret_cast<const uint8_t*>(buf);
+
+	data_len = rf24_min(data_len, payload_size);
+ 770:	c1 81       	ldd	r28, Z+1	; 0x01
+ 772:	1c 2f       	mov	r17, r28
+ 774:	4c 17       	cp	r20, r28
+ 776:	08 f4       	brcc	.+2      	; 0x77a <_ZN4RF2413write_payloadEPKvhh+0x22>
+ 778:	14 2f       	mov	r17, r20
+	uint8_t blank_len = dynamic_payloads_enabled ? 0 : payload_size - data_len;
+ 77a:	92 81       	ldd	r25, Z+2	; 0x02
+ 77c:	91 11       	cpse	r25, r1
+ 77e:	21 c0       	rjmp	.+66     	; 0x7c2 <_ZN4RF2413write_payloadEPKvhh+0x6a>
+ 780:	0c 2f       	mov	r16, r28
+ 782:	01 1b       	sub	r16, r17
+	//printf("[Writing %u bytes %u blanks]",data_len,blank_len);
+	//IF_SERIAL_DEBUG( printf("[Writing %u bytes %u blanks]\n",data_len,blank_len); );
+	
+	
+
+	cbi(PORTB,CSN); // ~begintransaction
+ 784:	c1 98       	cbi	0x18, 1	; 24
+	status = transfer( writeType );
+ 786:	77 dd       	rcall	.-1298   	; 0x276 <_Z8transferh>
+ 788:	b8 2e       	mov	r11, r24
+	while ( data_len-- ) {
+ 78a:	8f ef       	ldi	r24, 0xFF	; 255
+ 78c:	81 0f       	add	r24, r17
+ 78e:	11 11       	cpse	r17, r1
+ 790:	04 c0       	rjmp	.+8      	; 0x79a <_ZN4RF2413write_payloadEPKvhh+0x42>
+		transfer(*current++);
+	}
+	while ( blank_len-- ) {
+ 792:	01 11       	cpse	r16, r1
+ 794:	10 c0       	rjmp	.+32     	; 0x7b6 <_ZN4RF2413write_payloadEPKvhh+0x5e>
+ 796:	1c c0       	rjmp	.+56     	; 0x7d0 <_ZN4RF2413write_payloadEPKvhh+0x78>
+{
+	uint8_t status;
+	const uint8_t* current = reinterpret_cast<const uint8_t*>(buf);
+
+	data_len = rf24_min(data_len, payload_size);
+	uint8_t blank_len = dynamic_payloads_enabled ? 0 : payload_size - data_len;
+ 798:	00 e0       	ldi	r16, 0x00	; 0
+ 79a:	e6 01       	movw	r28, r12
+ 79c:	e8 2e       	mov	r14, r24
+ 79e:	f1 2c       	mov	r15, r1
+ 7a0:	8f ef       	ldi	r24, 0xFF	; 255
+ 7a2:	e8 1a       	sub	r14, r24
+ 7a4:	f8 0a       	sbc	r15, r24
+ 7a6:	ec 0c       	add	r14, r12
+ 7a8:	fd 1c       	adc	r15, r13
+	
+
+	cbi(PORTB,CSN); // ~begintransaction
+	status = transfer( writeType );
+	while ( data_len-- ) {
+		transfer(*current++);
+ 7aa:	89 91       	ld	r24, Y+
+ 7ac:	64 dd       	rcall	.-1336   	; 0x276 <_Z8transferh>
+	
+	
+
+	cbi(PORTB,CSN); // ~begintransaction
+	status = transfer( writeType );
+	while ( data_len-- ) {
+ 7ae:	ec 16       	cp	r14, r28
+ 7b0:	fd 06       	cpc	r15, r29
+ 7b2:	d9 f7       	brne	.-10     	; 0x7aa <_ZN4RF2413write_payloadEPKvhh+0x52>
+ 7b4:	ee cf       	rjmp	.-36     	; 0x792 <_ZN4RF2413write_payloadEPKvhh+0x3a>
+		transfer(*current++);
+	}
+	while ( blank_len-- ) {
+ 7b6:	c0 2f       	mov	r28, r16
+		transfer(0);
+ 7b8:	80 e0       	ldi	r24, 0x00	; 0
+ 7ba:	5d dd       	rcall	.-1350   	; 0x276 <_Z8transferh>
+ 7bc:	c1 50       	subi	r28, 0x01	; 1
+	cbi(PORTB,CSN); // ~begintransaction
+	status = transfer( writeType );
+	while ( data_len-- ) {
+		transfer(*current++);
+	}
+	while ( blank_len-- ) {
+ 7be:	e1 f7       	brne	.-8      	; 0x7b8 <_ZN4RF2413write_payloadEPKvhh+0x60>
+ 7c0:	07 c0       	rjmp	.+14     	; 0x7d0 <_ZN4RF2413write_payloadEPKvhh+0x78>
+	//printf("[Writing %u bytes %u blanks]",data_len,blank_len);
+	//IF_SERIAL_DEBUG( printf("[Writing %u bytes %u blanks]\n",data_len,blank_len); );
+	
+	
+
+	cbi(PORTB,CSN); // ~begintransaction
+ 7c2:	c1 98       	cbi	0x18, 1	; 24
+	status = transfer( writeType );
+ 7c4:	58 dd       	rcall	.-1360   	; 0x276 <_Z8transferh>
+ 7c6:	b8 2e       	mov	r11, r24
+	while ( data_len-- ) {
+ 7c8:	8f ef       	ldi	r24, 0xFF	; 255
+ 7ca:	81 0f       	add	r24, r17
+ 7cc:	11 11       	cpse	r17, r1
+ 7ce:	e4 cf       	rjmp	.-56     	; 0x798 <_ZN4RF2413write_payloadEPKvhh+0x40>
+		transfer(*current++);
+	}
+	while ( blank_len-- ) {
+		transfer(0);
+	}
+		sbi(PORTB,CSN); // ~endtransaction
+ 7d0:	c1 9a       	sbi	0x18, 1	; 24
+
+
+	return status;
+}
+ 7d2:	8b 2d       	mov	r24, r11
+ 7d4:	df 91       	pop	r29
+ 7d6:	cf 91       	pop	r28
+ 7d8:	1f 91       	pop	r17
+ 7da:	0f 91       	pop	r16
+ 7dc:	ff 90       	pop	r15
+ 7de:	ef 90       	pop	r14
+ 7e0:	df 90       	pop	r13
+ 7e2:	cf 90       	pop	r12
+ 7e4:	bf 90       	pop	r11
+ 7e6:	08 95       	ret
+
+000007e8 <_ZN4RF2414startFastWriteEPKvhbb>:
+	}
+	//TX OK 1 or 0
+	return 1;
+}
+
+void RF24::startFastWrite( const void* buf, uint8_t len, const bool multicast, bool startTx){ //TMRh20
+ 7e8:	0f 93       	push	r16
+
+	//write_payload( buf,len);
+	write_payload( buf, len,multicast ? W_TX_PAYLOAD_NO_ACK : W_TX_PAYLOAD ) ;
+ 7ea:	21 11       	cpse	r18, r1
+ 7ec:	02 c0       	rjmp	.+4      	; 0x7f2 <_ZN4RF2414startFastWriteEPKvhbb+0xa>
+ 7ee:	20 ea       	ldi	r18, 0xA0	; 160
+ 7f0:	01 c0       	rjmp	.+2      	; 0x7f4 <_ZN4RF2414startFastWriteEPKvhbb+0xc>
+ 7f2:	20 eb       	ldi	r18, 0xB0	; 176
+ 7f4:	b1 df       	rcall	.-158    	; 0x758 <_ZN4RF2413write_payloadEPKvhh>
+	if(startTx){
+ 7f6:	01 11       	cpse	r16, r1
+			sbi(PORTB,SS);
+ 7f8:	c2 9a       	sbi	0x18, 2	; 24
+	}
+
+}
+ 7fa:	0f 91       	pop	r16
+ 7fc:	08 95       	ret
+
+000007fe <_ZN4RF245writeEPKvhb>:
+bool RF24::write( const void* buf, uint8_t len ){
+	return write(buf,len,0);
+}
+
+bool RF24::write( const void* buf, uint8_t len, const bool multicast )
+{
+ 7fe:	0f 93       	push	r16
+ 800:	cf 93       	push	r28
+ 802:	df 93       	push	r29
+ 804:	ec 01       	movw	r28, r24
+	//Start Writing
+	startFastWrite(buf,len,multicast);
+ 806:	01 e0       	ldi	r16, 0x01	; 1
+ 808:	ef df       	rcall	.-34     	; 0x7e8 <_ZN4RF2414startFastWriteEPKvhbb>
+ 80a:	8f e4       	ldi	r24, 0x4F	; 79
+ 80c:	93 ec       	ldi	r25, 0xC3	; 195
+ 80e:	01 97       	sbiw	r24, 0x01	; 1
+ 810:	f1 f7       	brne	.-4      	; 0x80e <_ZN4RF245writeEPKvhb+0x10>
+ 812:	00 c0       	rjmp	.+0      	; 0x814 <_ZN4RF245writeEPKvhb+0x16>
+ 814:	00 00       	nop
+	//while( ! ( get_status()  & ( _BV(TX_DS) | _BV(MAX_RT) ))) {
+		//_delay_ms(100);
+	//}
+
+	_delay_ms(10);
+	cbi(PORTB,SS);
+ 816:	c2 98       	cbi	0x18, 2	; 24
+
+	uint8_t status = write_register(NRF_STATUS,_BV(RX_DR) | _BV(TX_DS) | _BV(MAX_RT) );
+ 818:	40 e7       	ldi	r20, 0x70	; 112
+ 81a:	67 e0       	ldi	r22, 0x07	; 7
+ 81c:	ce 01       	movw	r24, r28
+ 81e:	6e dd       	rcall	.-1316   	; 0x2fc <_ZN4RF2414write_registerEhh>
+
+	//Max retries exceeded
+	if( status & _BV(MAX_RT))
+ 820:	84 ff       	sbrs	r24, 4
+ 822:	04 c0       	rjmp	.+8      	; 0x82c <_ZN4RF245writeEPKvhb+0x2e>
+	{
+		flush_tx(); //Only going to be 1 packet int the FIFO at a time using this method, so just flush
+ 824:	ce 01       	movw	r24, r28
+ 826:	d3 dd       	rcall	.-1114   	; 0x3ce <_ZN4RF248flush_txEv>
+		return 0;
+ 828:	80 e0       	ldi	r24, 0x00	; 0
+ 82a:	01 c0       	rjmp	.+2      	; 0x82e <_ZN4RF245writeEPKvhb+0x30>
+	}
+	//TX OK 1 or 0
+	return 1;
+ 82c:	81 e0       	ldi	r24, 0x01	; 1
+}
+ 82e:	df 91       	pop	r29
+ 830:	cf 91       	pop	r28
+ 832:	0f 91       	pop	r16
+ 834:	08 95       	ret
+
+00000836 <_ZN4RF245writeEPKvh>:
+	//write_register(RX_PW_P0,rf24_min(payload_size,max_payload_size));
+	write_register(RX_PW_P0,payload_size);
+}
+
+bool RF24::write( const void* buf, uint8_t len ){
+	return write(buf,len,0);
+ 836:	20 e0       	ldi	r18, 0x00	; 0
+ 838:	e2 df       	rcall	.-60     	; 0x7fe <_ZN4RF245writeEPKvhb>
+}
+ 83a:	08 95       	ret
+
+0000083c <__tablejump2__>:
+ 83c:	ee 0f       	add	r30, r30
+ 83e:	ff 1f       	adc	r31, r31
+ 840:	05 90       	lpm	r0, Z+
+ 842:	f4 91       	lpm	r31, Z
+ 844:	e0 2d       	mov	r30, r0
+ 846:	09 94       	ijmp
+
+00000848 <_exit>:
+ 848:	f8 94       	cli
+
+0000084a <__stop_program>:
+ 84a:	ff cf       	rjmp	.-2      	; 0x84a <__stop_program>
