@@ -25,3 +25,9 @@ Commute 3 boards via NRF24l01 with ATMEGA8.
     + Leds  (1 led for normal signal , 1 led for warning signal)
     + Buzzer will be turned on when my mom press the button to call us.
 
+# IDE - STIMULINK - RE-EDIT FROM ARDUINO LIB - POWER
+  - Atmel Studio 7.0
+  - Proteus 8.6
+  - NRF24L01 Library in the zip package
+  - Adapter 5V-1A
+  
