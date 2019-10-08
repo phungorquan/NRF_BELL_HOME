@@ -1,5 +1,5 @@
 # NRF_BELL_HOME
-Commute 3 boards via NRF24l01 with ATMEGA8
+Commute 3 boards via NRF24l01 with ATMEGA8...
 
 - I have a TAG (downstair), and 2 ANCHORS(1 in my room [A] and 1 in my young sister's room [B] ).My mom don't need to yell us anymore, she just press the buttons to call us.
 - This is a small project to help my mother not tired.  
